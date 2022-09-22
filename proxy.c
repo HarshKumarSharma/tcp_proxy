@@ -210,7 +210,7 @@ int create_socket(int port) {
     /* prepare to bind on specified numeric address */
     if (bind_addr != NULL) {
         /* check for numeric IP to specify IPv6 or IPv4 socket */
-        if (validfamily = check_ipversion(bind_addr)) {
+        if ((validfamily = check_ipversion(bind_addr))) {
              hints.ai_family = validfamily;
              hints.ai_flags |= AI_NUMERICHOST; /* bind_addr is a valid numeric ip, skip resolve */
         }
@@ -444,7 +444,7 @@ int create_connection() {
     sprintf(portstr, "%d", remote_port);
 
     /* check for numeric IP to specify IPv6 or IPv4 socket */
-    if (validfamily = check_ipversion(remote_host)) {
+    if ((validfamily = check_ipversion(remote_host))) {
          hints.ai_family = validfamily;
          hints.ai_flags |= AI_NUMERICHOST;  /* remote_host is a valid numeric ip, skip resolve */
     }
